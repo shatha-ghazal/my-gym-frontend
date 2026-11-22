@@ -1,59 +1,53 @@
-# MyFirstWebsite
+# My Gym Management System
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.7.
+A full-stack gym management web application built with **Angular, ASP.NET Core, and PostgreSQL**. The system simplifies gym operations by providing membership management, attendance tracking, payment records, trainer information, and administrative reporting.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **User Authentication:** Secure registration and login using JWT authentication.
+- **Role-Based Access:** Separate permissions for administrators, gym members, and regular users.
+- **Dashboard:** User-friendly dashboard with role-specific navigation.
+- **Membership Management:** Basic (AED 100), Standard (AED 250), and Premium (AED 800) plans.
+- **Attendance Tracking:** Gym members can check in, check out, and view their attendance history.
+- **Trainer Information:** Browse trainers and their specializations.
+- **Payment Management:** Track membership payments and transaction records.
+- **Admin Panel:** Manage gym members, payments, attendance, and reports.
+- **Reports:** View membership statistics, revenue summaries, and attendance information.
 
-```bash
-ng serve
-```
+## Technologies Used
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+| Layer | Technologies |
+|---|---|
+| Frontend | Angular 22, TypeScript, HTML, CSS |
+| Backend | ASP.NET Core 10, C#, REST API |
+| Database | PostgreSQL, Entity Framework Core, Neon |
+| Authentication | JWT, Role-Based Authorization |
+| Deployment | Vercel, Render |
+| CI/CD | GitHub Actions, GitHub |
 
-## Code scaffolding
+## User Roles
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Admin:** Access to all management features, payments, member records, and reports.
+- **Gym Member:** Access to memberships, trainers, personal profile, and attendance.
+- **Regular User:** Browse trainers and membership plans, manage their profile, and subscribe to a membership.
 
-```bash
-ng generate component component-name
-```
+## Admin Demo Credentials
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+For demonstration purposes:
 
-```bash
-ng generate --help
-```
+- **Email:** `admin@gymmanagement.com`
+- **Password:** `admin123`
 
-## Building
+## Live Application
 
-To build the project run:
+**Frontend:** https://my-gym-frontend-three.vercel.app/login
 
-```bash
-ng build
-```
+**Backend API:** https://my-gym-backend-kzs7.onrender.com
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## CI/CD
 
-## Running unit tests
+The project uses **GitHub Actions** for automated build verification, with automatic frontend deployment to **Vercel** and backend deployment to **Render**.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Note
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Membership checkout currently uses demonstration payments and does not process real financial transactions.
