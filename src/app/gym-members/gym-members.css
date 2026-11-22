@@ -1,0 +1,118 @@
+/* Gym Members Page */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #E7F3FF;
+}
+
+.page-container {
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 40px 28px;
+  box-sizing: border-box;
+}
+
+/* Page Heading */
+
+.page-container h1 {
+  color: #174A82;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.page-container > p {
+  color: #64748B;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+/* Members Table Card */
+
+.members-card {
+  background: #FFFFFF;
+  border: 1px solid #D8E7F5;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 30px;
+  box-shadow: 0 6px 24px rgba(23, 74, 130, 0.07);
+  overflow-x: auto;
+}
+
+.members-card h2 {
+  color: #174A82;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 24px;
+}
+
+/* Table */
+
+.members-card table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.members-card th {
+  background-color: #174A82;
+  color: #FFFFFF;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.members-card td {
+  padding: 16px;
+  color: #334155;
+  font-size: 14px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.members-card tbody tr:hover {
+  background-color: #F1F7FD;
+}
+
+.members-card tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Back to Dashboard */
+
+.page-container > a {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #174A82;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.page-container > a:hover {
+  background: #376FA7;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 24px 16px;
+  }
+
+  .members-card {
+    padding: 18px;
+  }
+
+  .members-card table {
+    min-width: 650px;
+  }
+
+  .page-container h1 {
+    font-size: 25px;
+  }
+}

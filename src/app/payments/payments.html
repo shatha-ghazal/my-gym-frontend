@@ -1,0 +1,132 @@
+
+<div class="page-container">
+
+  <!-- Page Header -->
+  <div class="payments-header">
+    <h1>Payments Management</h1>
+    <p>
+      View and manage gym membership payment transactions.
+    </p>
+  </div>
+
+  <!-- Loading Message -->
+  <div
+    *ngIf="isLoading"
+    class="loading-message"
+  >
+    Loading payment transactions...
+  </div>
+
+  <!-- Error Message -->
+  <div
+    *ngIf="errorMessage"
+    class="error-message"
+  >
+    {{ errorMessage }}
+  </div>
+
+  <!-- Payments Table -->
+  <div
+    class="payments-card"
+    *ngIf="!isLoading && !errorMessage"
+  >
+
+    <div class="table-header">
+      <h2>Membership Transactions</h2>
+
+      <span class="transaction-count">
+        Total Transactions: {{ payments.length }}
+      </span>
+    </div>
+
+    <!-- Empty State -->
+    <div
+      *ngIf="payments.length === 0"
+      class="empty-message"
+    >
+      No payment transactions are currently available.
+    </div>
+
+    <!-- Transaction Table -->
+    <div
+      class="table-wrapper"
+      *ngIf="payments.length > 0"
+    >
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Transaction ID</th>
+            <th>Gym Member</th>
+            <th>Amount</th>
+            <th>Payment Date</th>
+            <th>Payment Method</th>
+            <th>Status</th>
+            <th>Reference</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let payment of payments">
+
+            <td>
+              #{{ payment.id }}
+            </td>
+
+            <td>
+              {{ getMemberName(payment) }}
+            </td>
+
+            <td>
+              {{ payment.amount | number:'1.2-2' }} AED
+            </td>
+
+            <td>
+              {{ payment.paymentDate | date:'mediumDate' }}
+            </td>
+
+            <td>
+              {{ payment.paymentMethod || 'Not specified' }}
+            </td>
+
+            <td>
+              <span
+                class="status-badge"
+                [ngClass]="{
+                  'status-completed':
+                    payment.status === 'Completed',
+                  'status-pending':
+                    payment.status === 'Pending',
+                  'status-failed':
+                    payment.status === 'Failed'
+                }"
+              >
+                {{ payment.status }}
+              </span>
+            </td>
+
+            <td>
+              {{ payment.transactionReference || 'N/A' }}
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+  <!-- Back to Dashboard -->
+  <a
+    class="back-link"
+    routerLink="/home"
+  >
+    Back to Dashboard
+  </a>
+
+</div>

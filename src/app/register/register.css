@@ -1,0 +1,187 @@
+
+/* GymManagement Register Page */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #E7F3FF;
+}
+
+/* Page Background */
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  background: #E7F3FF;
+  box-sizing: border-box;
+}
+
+/* Registration Card */
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: #FFFFFF;
+  padding: 42px 38px;
+  border-radius: 18px;
+  border: 1px solid #D8E7F5;
+  box-shadow: 0 12px 35px rgba(23, 74, 130, 0.10);
+  box-sizing: border-box;
+}
+
+/* Heading */
+
+.auth-card h1 {
+  color: #174A82;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+.auth-card > p {
+  color: #64748B;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.6;
+  margin: 0 0 30px;
+}
+
+/* Form */
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.form-group label {
+  color: #284B70;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  height: 48px;
+  padding: 12px 15px;
+  border: 1px solid #C7D9EA;
+  border-radius: 9px;
+  background: #F9FCFF;
+  color: #173B63;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input::placeholder {
+  color: #94A3B8;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #174A82;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(23, 74, 130, 0.12);
+}
+
+/* Register Button */
+
+.auth-card button[type="submit"] {
+  width: 100%;
+  min-height: 48px;
+  padding: 13px 20px;
+  border: none;
+  border-radius: 9px;
+  background: #174A82;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.auth-card button[type="submit"]:hover:not(:disabled) {
+  background: #376FA7;
+  transform: translateY(-1px);
+}
+
+.auth-card button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Error Message */
+
+.error-message {
+  background: #FDE8E8;
+  color: #B42318;
+  border: 1px solid #F5C2C2;
+  padding: 12px 15px;
+  border-radius: 9px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+  text-align: left;
+}
+
+/* Success Message */
+
+.success-message {
+  background: #E8F7ED;
+  color: #237A42;
+  border: 1px solid #BFE5CA;
+  padding: 12px 15px;
+  border-radius: 9px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+  text-align: left;
+}
+
+/* Login Link */
+
+.auth-card > .login-link {
+  margin: 28px 0 0;
+  text-align: center;
+  color: #64748B;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #174A82;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  color: #376FA7;
+  text-decoration: underline;
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 20px 15px;
+  }
+
+  .auth-card {
+    padding: 32px 24px;
+  }
+
+  .auth-card h1 {
+    font-size: 26px;
+  }
+}

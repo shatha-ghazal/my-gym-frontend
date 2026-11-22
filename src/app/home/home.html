@@ -1,0 +1,128 @@
+<div class="dashboard">
+
+  <aside class="sidebar">
+    <h2>My Gym</h2>
+
+    <nav>
+      <a routerLink="/home">Dashboard</a>
+      <a routerLink="/profile">Profile</a>
+      <a routerLink="/trainers">Trainers</a>
+      <a routerLink="/memberships">Memberships</a>
+
+      <!-- Gym Members Only -->
+      <a
+        *ngIf="isGymMember && !isAdmin"
+        routerLink="/attendance">
+        Attendance
+      </a>
+
+      <!-- Admin Only -->
+      <a
+        *ngIf="isAdmin"
+        routerLink="/admin-attendance">
+        Admin Attendance
+      </a>
+
+      <a
+        *ngIf="isAdmin"
+        routerLink="/gym-members">
+        Gym Members
+      </a>
+
+      <a
+        *ngIf="isAdmin"
+        routerLink="/payments">
+        Payments
+      </a>
+
+      <a
+        *ngIf="isAdmin"
+        routerLink="/reports">
+        Reports
+      </a>
+    </nav>
+
+    <button (click)="logout()">Logout</button>
+  </aside>
+
+  <main class="main-content">
+
+    <header>
+      <h1>Dashboard</h1>
+      <p>Welcome to My Gym</p>
+    </header>
+
+    <section class="dashboard-cards">
+
+      <a class="dashboard-card" routerLink="/profile">
+        <h3>My Profile</h3>
+        <p>View and manage your personal information.</p>
+      </a>
+
+      <a class="dashboard-card" routerLink="/trainers">
+        <h3>Trainers</h3>
+        <p>Explore our professional gym trainers.</p>
+      </a>
+
+      <a class="dashboard-card" routerLink="/memberships">
+        <h3>Memberships</h3>
+        <p>Explore available membership plans.</p>
+      </a>
+
+      <!-- Gym Members Only -->
+      <a
+        class="dashboard-card"
+        *ngIf="isGymMember && !isAdmin"
+        routerLink="/attendance">
+        <h3>Attendance</h3>
+        <p>View your attendance and check-in records.</p>
+      </a>
+
+      <!-- Admin Only -->
+      <a
+        class="dashboard-card"
+        *ngIf="isAdmin"
+        routerLink="/admin-attendance">
+        <h3>Admin Attendance</h3>
+        <p>
+          View all gym members' attendance,
+          check-in and check-out records,
+          and attendance statistics.
+        </p>
+      </a>
+
+      <a
+        class="dashboard-card"
+        *ngIf="isAdmin"
+        routerLink="/gym-members">
+        <h3>Gym Members</h3>
+        <p>
+          View and manage registered gym members
+          and their membership information.
+        </p>
+      </a>
+
+      <a
+        class="dashboard-card"
+        *ngIf="isAdmin"
+        routerLink="/payments">
+        <h3>Payments</h3>
+        <p>
+          Manage real gym member payments
+          and membership transactions.
+        </p>
+      </a>
+
+      <a
+        class="dashboard-card"
+        *ngIf="isAdmin"
+        routerLink="/reports">
+        <h3>Reports</h3>
+        <p>View gym management reports.</p>
+      </a>
+
+    </section>
+
+  </main>
+
+</div>

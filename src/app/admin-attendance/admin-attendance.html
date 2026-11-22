@@ -1,0 +1,171 @@
+<div class="admin-attendance-page">
+
+  <div class="page-header">
+    <div>
+      <h1>Admin Attendance Management</h1>
+      <p>View and monitor gym members' attendance records.</p>
+    </div>
+
+    <a routerLink="/home" class="back-button">
+      Back to Dashboard
+    </a>
+  </div>
+
+  <!-- Attendance Statistics -->
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <h3>Total Attendance</h3>
+      <p class="stat-number">{{ totalAttendance }}</p>
+      <span>All recorded check-ins</span>
+    </div>
+
+    <div class="stat-card">
+      <h3>Currently Checked In</h3>
+      <p class="stat-number">{{ currentlyCheckedIn }}</p>
+      <span>Active attendance sessions</span>
+    </div>
+
+    <div class="stat-card">
+      <h3>Today's Attendance</h3>
+      <p class="stat-number">{{ todayAttendance }}</p>
+      <span>Check-ins recorded today</span>
+    </div>
+
+    <div class="stat-card">
+      <h3>Monthly Attendance</h3>
+      <p class="stat-number">{{ monthlyAttendance }}</p>
+      <span>Check-ins this month</span>
+    </div>
+
+  </div>
+
+  <!-- Attendance Records -->
+  <div class="attendance-card">
+
+    <div class="section-header">
+      <h2>All Attendance Records</h2>
+
+      <button
+        type="button"
+        class="refresh-button"
+        (click)="loadAttendance()"
+        [disabled]="loading">
+        Refresh Records
+      </button>
+    </div>
+
+    <!-- Search and Filters -->
+    <div class="filters">
+
+      <div class="filter-group">
+        <label for="memberSearch">Search Member</label>
+
+        <input
+          id="memberSearch"
+          type="text"
+          [(ngModel)]="searchTerm"
+          placeholder="Enter member name" />
+      </div>
+
+      <div class="filter-group">
+        <label for="attendanceDate">Attendance Date</label>
+
+        <input
+          id="attendanceDate"
+          type="date"
+          [(ngModel)]="selectedDate" />
+      </div>
+
+      <button
+        type="button"
+        class="clear-button"
+        (click)="clearFilters()">
+        Clear Filters
+      </button>
+
+    </div>
+
+    <!-- Loading -->
+    <p *ngIf="loading" class="info-message">
+      Loading attendance records...
+    </p>
+
+    <!-- Error -->
+    <p *ngIf="errorMessage" class="error-message" role="alert">
+      {{ errorMessage }}
+    </p>
+
+    <!-- Attendance Table -->
+    <div
+      class="table-wrapper"
+      *ngIf="!loading && !errorMessage">
+
+      <table *ngIf="filteredAttendance.length > 0">
+        <thead>
+          <tr>
+            <th>Record ID</th>
+            <th>Member ID</th>
+            <th>Member Name</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let record of filteredAttendance">
+
+            <td>{{ record.id }}</td>
+
+            <td>{{ record.memberId }}</td>
+
+            <td>{{ record.memberName || 'Unknown Member' }}</td>
+
+            <td>
+              {{ record.checkInTime | date:'medium' }}
+            </td>
+
+            <td>
+              <ng-container *ngIf="record.checkOutTime; else notCheckedOut">
+                {{ record.checkOutTime | date:'medium' }}
+              </ng-container>
+
+              <ng-template #notCheckedOut>
+                Not checked out
+              </ng-template>
+            </td>
+
+            <td>
+              <span
+                class="status-badge"
+                [class.checked-in]="!record.checkOutTime"
+                [class.checked-out]="!!record.checkOutTime">
+
+                {{ record.checkOutTime ? 'Checked Out' : 'Checked In' }}
+
+              </span>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+      <p
+        *ngIf="filteredAttendance.length === 0"
+        class="empty-message">
+        No attendance records found.
+      </p>
+
+    </div>
+
+    <div
+      class="table-footer"
+      *ngIf="!loading && !errorMessage">
+      Showing {{ filteredAttendance.length }} of
+      {{ attendanceRecords.length }} records
+    </div>
+
+  </div>
+
+</div>

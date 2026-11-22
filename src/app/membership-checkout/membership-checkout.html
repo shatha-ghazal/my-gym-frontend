@@ -1,0 +1,111 @@
+<div class="checkout-container">
+
+  <h1>Membership Checkout</h1>
+
+  <p>
+    Review your selected membership plan
+    before confirming your demo payment.
+  </p>
+
+  <!-- Loading -->
+  <p *ngIf="isLoading">
+    Loading membership details...
+  </p>
+
+  <!-- Error message -->
+  <p *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </p>
+
+  <!-- Checkout card -->
+  <div
+    class="checkout-card"
+    *ngIf="!isLoading && selectedPlan && !paymentSuccessful">
+
+    <h2>{{ selectedPlan.name }}</h2>
+
+    <div class="plan-details">
+
+      <p>
+        <strong>Price:</strong>
+        {{ selectedPlan.price }} AED
+      </p>
+
+      <p>
+        <strong>Duration:</strong>
+        {{ selectedPlan.durationInMonths }}
+        {{ selectedPlan.durationInMonths === 1 ? 'Month' : 'Months' }}
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        {{ selectedPlan.description }}
+      </p>
+
+    </div>
+
+    <div class="payment-summary">
+
+      <h3>Payment Summary</h3>
+
+      <p>
+        <strong>Total Amount:</strong>
+        {{ selectedPlan.price }} AED
+      </p>
+
+      <p>
+        <strong>Payment Type:</strong>
+        Demo Payment
+      </p>
+
+      <p>
+        No real money will be charged.
+      </p>
+
+    </div>
+
+    <button
+      type="button"
+      class="confirm-button"
+      [disabled]="isProcessing"
+      (click)="confirmPayment()">
+
+      {{ isProcessing ? 'Processing...' : 'Confirm Demo Payment' }}
+
+    </button>
+
+  </div>
+
+  <!-- Payment success -->
+  <div
+    class="success-card"
+    *ngIf="paymentSuccessful">
+
+    <h2>Membership Activated Successfully!</h2>
+
+    <p>{{ successMessage }}</p>
+
+    <p>
+      Your gym membership is now active.
+      You can access the Attendance feature
+      from your dashboard.
+    </p>
+
+    <button
+      type="button"
+      (click)="backToDashboard()">
+      Go to Dashboard
+    </button>
+
+  </div>
+
+  <!-- Navigation -->
+  <div class="checkout-navigation">
+
+    <a routerLink="/memberships">
+      Back to Membership Plans
+    </a>
+
+  </div>
+
+</div>

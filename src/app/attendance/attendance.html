@@ -1,0 +1,102 @@
+<div class="page-container">
+
+  <h1>Attendance</h1>
+
+  <p>Track your gym attendance and check-in records.</p>
+
+  <div class="attendance-card">
+
+    <h2>Gym Check-In / Check-Out</h2>
+
+    <p>
+      Record your gym visits using the buttons below.
+    </p>
+
+    <div class="attendance-actions">
+
+      <button
+        type="button"
+        (click)="checkIn()"
+        [disabled]="processing || loading || isCheckedIn">
+        Check In
+      </button>
+
+      <button
+        type="button"
+        (click)="checkOut()"
+        [disabled]="processing || loading || !isCheckedIn">
+        Check Out
+      </button>
+
+    </div>
+
+    <p *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </p>
+
+    <p *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </p>
+
+  </div>
+
+  <div class="attendance-card">
+
+    <h2>My Attendance Records</h2>
+
+    <p *ngIf="loading">
+      Loading attendance records...
+    </p>
+
+    <table *ngIf="!loading && attendanceRecords.length > 0">
+
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Check-in Time</th>
+          <th>Check-out Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let record of attendanceRecords">
+
+          <td>
+            {{ record.checkInTime | date:'yyyy-MM-dd' }}
+          </td>
+
+          <td>
+            {{ record.checkInTime | date:'hh:mm a' }}
+          </td>
+
+          <td>
+            {{ record.checkOutTime
+              ? (record.checkOutTime | date:'hh:mm a')
+              : 'Not checked out' }}
+          </td>
+
+          <td>
+            {{ record.status }}
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+    <p
+      *ngIf="!loading && !errorMessage &&
+             attendanceRecords.length === 0">
+      No attendance records found.
+    </p>
+
+  </div>
+
+  <a routerLink="/home">
+    Back to Dashboard
+  </a>
+
+</div>

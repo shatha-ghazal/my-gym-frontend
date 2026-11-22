@@ -1,0 +1,220 @@
+<div class="page-container">
+
+  <!-- Page Header -->
+  <div class="membership-header">
+    <h1>Gym Membership Plans</h1>
+
+    <p *ngIf="!isAdmin">
+      Choose the perfect membership plan for your
+      fitness journey.
+    </p>
+
+    <p *ngIf="isAdmin">
+      View and manage the gym's membership plans.
+    </p>
+  </div>
+
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+ 
+
+  <!-- Loading Message -->
+  <div *ngIf="isLoading" class="loading-message">
+    Loading membership plans...
+  </div>
+
+  <!-- Membership Plans -->
+  <div
+    class="membership-list"
+    *ngIf="!isLoading && !errorMessage"
+  >
+
+    <div
+      class="membership-card"
+      *ngFor="let plan of plans"
+      [class.popular-plan]="plan.name === 'Standard'"
+    >
+
+      <!-- Popular Badge -->
+      <div
+        class="popular-badge"
+        *ngIf="plan.name === 'Standard'"
+      >
+        Most Popular
+      </div>
+
+      <!-- Plan Name -->
+      <h2>{{ plan.name }}</h2>
+
+      <!-- Price -->
+      <div class="plan-price">
+        <span class="currency">AED</span>
+        <span class="amount">
+          {{ plan.price }}
+        </span>
+      </div>
+
+      <!-- Duration -->
+      <p class="plan-duration">
+        {{ plan.durationInMonths }}
+        {{
+          plan.durationInMonths === 1
+            ? 'Month'
+            : 'Months'
+        }}
+        Membership
+      </p>
+
+      <!-- Description -->
+      <p class="plan-description">
+        {{ plan.description }}
+      </p>
+
+      <!-- Membership Benefits -->
+      <div class="plan-benefits">
+
+        <div class="benefit">
+          <span class="check-icon">✓</span>
+          Gym facility access
+        </div>
+
+        <div class="benefit">
+          <span class="check-icon">✓</span>
+          Fitness equipment access
+        </div>
+
+        <div class="benefit">
+          <span class="check-icon">✓</span>
+          Membership management
+        </div>
+
+        <div
+          class="benefit"
+          *ngIf="plan.name === 'Premium'"
+        >
+          <span class="check-icon">✓</span>
+          Premium membership benefits
+        </div>
+
+      </div>
+
+      <!-- Subscribe: Non-Admin Users Only -->
+      <button
+        *ngIf="!isAdmin"
+        type="button"
+        class="subscribe-button"
+        (click)="subscribe(plan)"
+      >
+        Subscribe Now
+      </button>
+
+    </div>
+
+    <!-- No Plans Available -->
+    <p
+      class="empty-message"
+      *ngIf="plans.length === 0"
+    >
+      No membership plans are currently available.
+    </p>
+
+  </div>
+
+   <!-- Admin-Only Add Membership Plan -->
+  <div class="admin-plan-section" *ngIf="isAdmin">
+
+    <h2>Add Membership Plan</h2>
+
+    <p>
+      Create a new membership plan for gym members.
+    </p>
+
+    <form
+      class="plan-form"
+      (ngSubmit)="addMembershipPlan()"
+      #planForm="ngForm"
+    >
+
+      <div class="form-group">
+        <label for="planName">Plan Name *</label>
+        <input
+          id="planName"
+          name="planName"
+          type="text"
+          [(ngModel)]="newPlan.name"
+          placeholder="e.g. Gold Membership"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="planPrice">Price (AED) *</label>
+        <input
+          id="planPrice"
+          name="planPrice"
+          type="number"
+          [(ngModel)]="newPlan.price"
+          min="0.01"
+          step="0.01"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="planDuration">
+          Duration (Months) *
+        </label>
+        <input
+          id="planDuration"
+          name="planDuration"
+          type="number"
+          [(ngModel)]="newPlan.durationInMonths"
+          min="1"
+          step="1"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="planDescription">
+          Description
+        </label>
+        <textarea
+          id="planDescription"
+          name="planDescription"
+          [(ngModel)]="newPlan.description"
+          rows="3"
+          placeholder="Describe the membership plan"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="add-plan-button"
+        [disabled]="isAdding || planForm.invalid"
+      >
+        {{
+          isAdding
+            ? 'Adding Membership Plan...'
+            : 'Add Membership Plan'
+        }}
+      </button>
+
+    </form>
+
+  </div>
+
+  <!-- Back to Dashboard -->
+  <a class="back-link" routerLink="/home">
+    Back to Dashboard
+  </a>
+
+</div>

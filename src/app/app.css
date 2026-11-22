@@ -1,0 +1,83 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.home-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.navbar h2 {
+  color: #2563eb;
+  margin: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #334155;
+  font-weight: bold;
+}
+
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.welcome {
+  color: #2563eb;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin: 15px 0;
+}
+
+.description {
+  color: #64748b;
+  font-size: 18px;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.btn {
+  background: #2563eb;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #1d4ed8;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: white;
+  color: #64748b;
+}

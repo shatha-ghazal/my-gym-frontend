@@ -1,0 +1,76 @@
+<div class="page-container">
+
+  <div class="reports-header">
+    <div>
+      <h1>Gym Reports</h1>
+      <p>
+        View gym membership, payment, revenue,
+        and attendance statistics.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="refresh-button"
+      (click)="loadReports()"
+      [disabled]="loading">
+      {{ loading ? 'Refreshing...' : 'Refresh Reports' }}
+    </button>
+  </div>
+
+  <!-- Loading Message -->
+  <p *ngIf="loading" class="loading-message">
+    Loading gym reports...
+  </p>
+
+  <!-- Error Message -->
+  <p *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </p>
+
+  <!-- Reports Statistics -->
+  <div class="reports-grid">
+
+    <div class="report-card">
+      <h2>Total Members</h2>
+      <p>{{ totalMembers }}</p>
+      <span>Registered gym members</span>
+    </div>
+
+    <div class="report-card">
+      <h2>Active Memberships</h2>
+      <p>{{ activeMemberships }}</p>
+      <span>Currently active memberships</span>
+    </div>
+
+    <div class="report-card">
+      <h2>Total Payments</h2>
+      <p>{{ totalPayments }}</p>
+      <span>Recorded payment transactions</span>
+    </div>
+
+    <div class="report-card">
+      <h2>Total Revenue</h2>
+      <p>{{ totalRevenue | number:'1.2-2' }} AED</p>
+      <span>Revenue from completed payments</span>
+    </div>
+
+    <div class="report-card">
+      <h2>Today's Attendance</h2>
+      <p>{{ todayAttendance }}</p>
+      <span>Check-ins recorded today (UTC)</span>
+    </div>
+
+    <div class="report-card">
+      <h2>Monthly Attendance</h2>
+      <p>{{ monthlyAttendance }}</p>
+      <span>Check-ins recorded this month (UTC)</span>
+    </div>
+
+  </div>
+
+  <a class="back-link" routerLink="/home">
+    Back to Dashboard
+  </a>
+
+</div>

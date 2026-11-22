@@ -1,0 +1,197 @@
+
+/* Gym Member Attendance Page */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #E7F3FF;
+}
+
+.page-container {
+  max-width: 1100px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 40px 28px 60px;
+  box-sizing: border-box;
+}
+
+/* Page Heading */
+
+.page-container h1 {
+  color: #174A82;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.page-container > p {
+  color: #64748B;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 30px;
+}
+
+/* Attendance Cards */
+
+.attendance-card {
+  background: #FFFFFF;
+  border: 1px solid #D8E7F5;
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 28px;
+  box-shadow: 0 6px 24px rgba(23, 74, 130, 0.07);
+  overflow-x: auto;
+}
+
+.attendance-card h2 {
+  color: #174A82;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+
+.attendance-card > p {
+  color: #64748B;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Check-In / Check-Out Buttons */
+
+.attendance-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+  margin-bottom: 20px;
+}
+
+.attendance-actions button {
+  min-width: 150px;
+  padding: 13px 24px;
+  background: #174A82;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.attendance-actions button:hover:not(:disabled) {
+  background: #376FA7;
+  transform: translateY(-1px);
+}
+
+.attendance-actions button:disabled {
+  background: #A7BBD0;
+  color: #FFFFFF;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Attendance Records Table */
+
+.attendance-card table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  text-align: left;
+  margin-top: 22px;
+}
+
+.attendance-card th {
+  background: #174A82;
+  color: #FFFFFF;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.attendance-card td {
+  padding: 16px;
+  color: #334155;
+  font-size: 14px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.attendance-card tbody tr:hover {
+  background: #F1F7FD;
+}
+
+.attendance-card tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Success Message */
+
+.attendance-card .success-message {
+  background: #E8F7ED;
+  color: #237A42;
+  border: 1px solid #BFE5CA;
+  border-radius: 9px;
+  padding: 13px 16px;
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+/* Error Message */
+
+.attendance-card .error-message {
+  background: #FDE8E8;
+  color: #B42318;
+  border: 1px solid #F5C2C2;
+  border-radius: 9px;
+  padding: 13px 16px;
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+/* Back to Dashboard */
+
+.page-container > a {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #174A82;
+  color: #FFFFFF;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.page-container > a:hover {
+  background: #376FA7;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 24px 16px 40px;
+  }
+
+  .page-container h1 {
+    font-size: 25px;
+  }
+
+  .attendance-card {
+    padding: 20px 16px;
+  }
+
+  .attendance-card h2 {
+    font-size: 19px;
+  }
+
+  .attendance-actions {
+    flex-direction: column;
+  }
+
+  .attendance-actions button {
+    width: 100%;
+  }
+}

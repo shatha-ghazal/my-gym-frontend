@@ -1,0 +1,152 @@
+/* Main checkout page */
+.checkout-container {
+  min-height: 100vh;
+  background-color: #E7F3FF;
+  font-family: Arial, sans-serif;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.checkout-container h1 {
+  color: #174A82;
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.checkout-container > p {
+  color: #526B83;
+  margin-bottom: 30px;
+}
+
+/* Checkout card */
+.checkout-card,
+.success-card {
+  background-color: white;
+  max-width: 520px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #D4E5F5;
+  box-shadow: 0 4px 15px rgba(23, 74, 130, 0.1);
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.checkout-card h2,
+.success-card h2 {
+  color: #174A82;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Membership plan details */
+.plan-details {
+  margin-bottom: 25px;
+}
+
+.plan-details p {
+  color: #526B83;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.plan-details strong {
+  color: #174A82;
+}
+
+/* Payment summary */
+.payment-summary {
+  background-color: #F0F7FF;
+  border: 1px solid #D4E5F5;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.payment-summary h3 {
+  color: #174A82;
+  margin-top: 0;
+}
+
+.payment-summary p {
+  color: #526B83;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.confirm-button,
+.success-card button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background-color: #174A82;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.confirm-button:hover,
+.success-card button:hover {
+  background-color: #376FA7;
+}
+
+.confirm-button:disabled {
+  background-color: #91A9C1;
+  cursor: not-allowed;
+}
+
+/* Success message */
+.success-card {
+  text-align: center;
+}
+
+.success-card h2 {
+  color: #174A82;
+}
+
+.success-card p {
+  color: #526B83;
+  line-height: 1.7;
+}
+
+/* Error message */
+.error-message {
+  color: #B42318 !important;
+  font-weight: bold;
+  margin: 20px auto;
+}
+
+/* Navigation */
+.checkout-navigation {
+  margin-top: 30px;
+}
+
+.checkout-navigation a {
+  color: #174A82;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.checkout-navigation a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .checkout-container {
+    padding: 25px 15px;
+  }
+
+  .checkout-container h1 {
+    font-size: 25px;
+  }
+
+  .checkout-card,
+  .success-card {
+    padding: 20px;
+  }
+}
